@@ -7,10 +7,10 @@ class CustomersController < ApplicationController
              
              @customers = Customer.where(
                  customer_search_term.where_clause,
-                 customer_search_term.where_args)#.
-                 #order(customer_search_term.order)
+                 customer_search_term.where_args).
+                 order(customer_search_term.order).limit(10)
          else
-             @customers = []
+             @customers = Customer.all.limit(10)
          end
     end
 end
